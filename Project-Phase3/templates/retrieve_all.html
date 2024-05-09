@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve All Data</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <h1>All Table Data</h1>
+    <!-- Iterate over each table and display its data in a separate table -->
+    {% for table, data in all_table_data.items() %}
+        <h3 style="color: brown;">Table name: {{ table }}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <!-- Display table headers -->
+                    {% for col_name in data[0].keys() %}
+                        <th>{{ col_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Display table rows -->
+                {% for row in data %}
+                    <tr>
+                        {% for value in row.values() %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+
+    <!-- Redirect to home page button -->
+    <footer>
+        <a href="/">Redirect to Home Page</a>
+    </footer>
+</body>
+</html>

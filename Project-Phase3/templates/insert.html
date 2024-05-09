@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Insert Data</title>
+</head>
+<body>
+    <h1>Insert Data</h1>
+    <form action="/insert_confirm" method="post">
+        <h3><label>Table Name: {{ table_name }}</label></h3><br>
+        <input type="hidden" id="{{ table_name }}" name="table_name" value="{{ table_name }}">
+        {% for column in columns %}
+            <label for="{{ column }}">{{ column }}:</label><br>
+            <input type="text" id="{{ column }}" name="{{ column }}"><br>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Column for Average</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Select Column</h1>
+    <form action="/result_avg" method="post">
+        <input type="hidden" name="table_name" id="table_name" value="{{ table_name }}">
+        <label for="column_name">Select Column:</label><br>
+        <select id="column_name" name="column_name">
+            {% for column in columns %}
+            <option value="{{ column }}">{{ column }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Calculate Avg">
+    </form>
+</body>
+</html>
